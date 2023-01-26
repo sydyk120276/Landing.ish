@@ -1,3 +1,6 @@
+@use "sass:math";
+
+
 
 body,
 html {
@@ -16,24 +19,31 @@ ul {
 }
 
 @function rem($px) {
-  $result: ($px / 16) + rem;
+  $result: math.div($px, 16) + rem;
   @return $result;
 }
 
 @function percent($pxOne, $pxTwo) {
-  $result:($pxOne / $pxTwo) * 100%;
+  $result: math.div($pxOne, $pxTwo) * 100%;
   @return $result;
 }
 
-$maxWidthContainer: rem(1440);
+$maxWidthContainer: 1440px;
 
 @mixin adaptive-value($property, $startSize, $minSize) {
   $addSize: $startSize - $minSize;
-    #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}))
+    #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / 1220))
   }
+
+$pc: rem(1480); // Пкб ноутбуки, некоторые планшеты в горизонтальном положении
+$tablet: rem(991.98); // Планшеты, некоторые телефоны в горизонтальном положении
+$mobile: rem(767.98); // телефоны L
+$mobileSmall: rem(479.98); // телефоны s
+
 
   .container {
     max-width: $maxWidthContainer;
+    padding: 0 rem(20);
     margin: 0 auto;;
   }
 
@@ -43,19 +53,23 @@ $maxWidthContainer: rem(1440);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 rem(120);
+    @include adaptive-value("padding-left", 120, 30);
+    @include adaptive-value("padding-right", 120, 30);
+    // padding: 0 rem(120);
     height: rem(151);
-      @media (max-width: rem(990)) {
+      @media (max-width: $tablet) {
         height: rem(90);
       }
-      @media (max-width: rem(770)) {
-            padding: 0 rem(50);
+      @media (max-width: $mobile) {
       }
-        @media (max-width: rem(490)) {
-           padding: 0 rem(30);
-        }
 		&__logo {
-        @media (max-width: rem(770)) {
+        width: rem(120);
+        height: rem(70);
+        @media (max-width: $mobile) {
+          width: rem(90);
+          height: rem(60);
+        }
+        @media (max-width: $mobileSmall) {
           width: rem(60);
           height: rem(40);
         }
@@ -65,7 +79,7 @@ $maxWidthContainer: rem(1440);
       display: flex;
       gap: rem(22);
       align-items: center;
-        @media (max-width: rem(770)) {
+        @media (max-width: $mobile) {
           gap: rem(9);
         }
 		}
@@ -78,7 +92,7 @@ $maxWidthContainer: rem(1440);
       line-height: rem(22);
       text-decoration-line: underline;
       color: #000000;
-        @media (max-width: rem(770)) {
+        @media (max-width: $mobileSmall) {
           font-size: rem(12);
           line-height: rem(15);
         }
@@ -95,7 +109,7 @@ $maxWidthContainer: rem(1440);
     background: #26A4E3;
     border-radius: rem(2);
 		&__logo {
-      @media (max-width: rem(770)) {
+      @media (max-width: $mobileSmall) {
         width: rem(15);
         height: rem(15);
       }
@@ -108,7 +122,7 @@ $maxWidthContainer: rem(1440);
       font-size: rem(18);
       line-height: rem(22);
       color: #FFFFFF;
-        @media (max-width: rem(770)) {
+        @media (max-width: $mobileSmall) {
           font-size: rem(12);
           line-height: rem(15);
         }
