@@ -17,22 +17,24 @@ ul {
   padding: 0;
   margin: 0;
 }
-
+ // eslint-disable-next-line
 @function rem($px) {
-  $result: math.div($px, 16) + rem;
+  $result: ($px / 16) + rem;
   @return $result;
 }
 
 @function percent($pxOne, $pxTwo) {
-  $result: math.div($pxOne, $pxTwo) * 100%;
+  $result: ($pxOne / $pxTwo) * 100%;
   @return $result;
 }
+
+@debug  calc(30px + 90 * ((100vw - 320px) / 1440));
 
 $maxWidthContainer: 1440px;
 
 @mixin adaptive-value($property, $startSize, $minSize) {
   $addSize: $startSize - $minSize;
-    #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / 1220))
+    #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / 1440))
   }
 
 $pc: rem(1480); // Пкб ноутбуки, некоторые планшеты в горизонтальном положении
@@ -43,7 +45,6 @@ $mobileSmall: rem(479.98); // телефоны s
 
   .container {
     max-width: $maxWidthContainer;
-    padding: 0 rem(20);
     margin: 0 auto;;
   }
 
@@ -53,8 +54,8 @@ $mobileSmall: rem(479.98); // телефоны s
     display: flex;
     justify-content: space-between;
     align-items: center;
-    @include adaptive-value("padding-left", 120, 30);
-    @include adaptive-value("padding-right", 120, 30);
+    @include adaptive-value("padding-left", 120, 10);
+    @include adaptive-value("padding-right", 120, 10);
     // padding: 0 rem(120);
     height: rem(151);
       @media (max-width: $tablet) {
@@ -90,7 +91,6 @@ $mobileSmall: rem(479.98); // телефоны s
       font-weight: 400;
       font-size: rem(18);
       line-height: rem(22);
-      text-decoration-line: underline;
       color: #000000;
         @media (max-width: $mobileSmall) {
           font-size: rem(12);
@@ -108,25 +108,25 @@ $mobileSmall: rem(479.98); // телефоны s
     gap: rem(8);
     background: #26A4E3;
     border-radius: rem(2);
-		&__logo {
-      @media (max-width: $mobileSmall) {
-        width: rem(15);
-        height: rem(15);
-      }
-		}
-
-		&__title {
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 400;
-      font-size: rem(18);
-      line-height: rem(22);
-      color: #FFFFFF;
+      &__logo {
         @media (max-width: $mobileSmall) {
-          font-size: rem(12);
-          line-height: rem(15);
+          width: rem(15);
+          height: rem(15);
         }
-		}
+      }
+
+      &__title {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: rem(18);
+        line-height: rem(22);
+        color: #FFFFFF;
+          @media (max-width: $mobileSmall) {
+            font-size: rem(12);
+            line-height: rem(15);
+          }
+      }
 }
 
  //-------header--------
@@ -135,199 +135,208 @@ $mobileSmall: rem(479.98); // телефоны s
  //-------content--------
 .content {
   display: grid;
-  grid-template-columns: repeat(rem(700), 1fr);
-  grid-template-rows: repeat(2, rem(218));
-  gap: rem(20);
-  padding: rem(83) rem(120) 0 rem(120);
-  @media (max-width: rem(990)) {
-    position: relative;
-    padding-top: rem(30);
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  @media (max-width: rem(770)) {
-    padding: rem(83) rem(90) 0 rem(90);
-  }
-  @media (max-width: rem(576)) {
-    padding: rem(83) rem(30) 0 rem(30);
-  }
-
-  &__title {
-    display: flex;
-    flex-direction: column;
-    gap: rem(33);
-    padding-top: rem(73);
-      @media (max-width: rem(770)) {
-
+  grid-template-columns: auto auto;
+  grid-template-rows: rem(400) auto;
+  gap: rem(30);
+    @include adaptive-value("padding-left", 120, 10);
+    @include adaptive-value("padding-right", 120, 10);
+    @include adaptive-value("padding-top", 50, 5);
+    @include adaptive-value("gap", 30, 10);
+      @media (max-width: $tablet) {
+        grid-template-columns: auto;
+        justify-content: center;
+        text-align: center;
+        grid-template-rows: rem(280) auto;
       }
-      @media (max-width: rem(490)) {
-
+      @media (max-width: $mobile) {
+        grid-template-rows: rem(250) auto;
       }
-    }
+      @media (max-width: $mobileSmall) {
+        grid-template-rows: rem(180) auto;
+      }
 
+      &__title {
+        display: flex;
+        flex-direction: column;
+        padding-top: rem(10);
 
-    &__time {
-      height: rem(159);
-      background: #FF7E2D;
-      border-radius: 8px;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      padding-left: rem(42);
-      gap: rem(8);
-        @media (max-width: rem(990)) {
-          position: absolute;
-          transform: translate(rem(-80), rem(1000));
-        }
-        @media (max-width: rem(770)) {
-          transform: translate(rem(-80), rem(1050));
-          padding-right: rem(10);
-        }
-        @media (max-width: rem(576)) {
-          transform: translate(rem(-70), rem(900));
-            padding-left: rem(22);
-            padding-right: rem(22);
-        }
-        @media (max-width: rem(490)) {
-          transform: translate(rem(-30), rem(730));
-        }
-        @media (max-width: rem(390)) {
-          transform: translate(rem(-20), rem(730));
+          @media (max-width: $mobile) {
+
+          }
         }
 
 
-          &-title {
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 400;
-            font-size: rem(18);
-            line-height: rem(22);
-            color: #FFFFFF;
-              @media (max-width: rem(990)) {
-                text-align: start;
+      &__time {
+        position: relative;
+        height: rem(166);
+        background: #FF7E2D;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: rem(8);
+            &-line {
+            @media (max-width: $tablet) {
+              position: absolute;
+              border: 1.5px solid #492DFF;
+              top: rem(-40);
+              left: 0;
+              width: 100%;
+              @media (max-width: $mobileSmall) {
+              top: rem(-20);
               }
+            }
           }
 
-          &-сountdown {
-            font-weight: 700;
-            font-size: rem(28);
-            line-height: rem(34);
-            color: #FFFFFF;
-            @media (max-width: rem(576)) {
-              font-weight: 700;
-              font-size: rem(20);
-              line-height: rem(30);
-            }
-            @media (max-width: rem(490)) {
-              font-weight: 600;
-              font-size: rem(16);
-              line-height: rem(18);
-            }
-            @media (max-width: rem(390)) {
-              font-weight: 600;
-              font-size: rem(14);
-              line-height: rem(18);
-            }
-            &-text {
+          @media (max-width: $tablet) {
+            @include adaptive-value("height", 150, 84);
+          }
+          @media (max-width: $mobile) {
+
+          }
+          @media (max-width: $mobileSmall) {
+            margin-top: rem(75);
+          }
+
+            &-title {
               font-family: 'Inter';
               font-style: normal;
               font-weight: 400;
+              line-height: rem(22);
+              color: #FFFFFF;
+              padding-left: rem(42);
+              padding-right: rem(42);
+                @media (max-width: $tablet) {
+                  text-align: start;
+                }
+                @media (max-width: $mobile) {
+                  @include adaptive-value("font-size", 24, 10);
+                }
+                @media (max-width: rem(460)) {
+                  padding: 0 rem(25);
+                }
             }
-          }
 
-    }
+            &-сountdown {
+              display: flex;
+              font-weight: 700;
+              font-size: rem(28);
+              line-height: rem(34);
+              color: #FFFFFF;
+              padding-left: rem(42);
+              padding-right: rem(42);
+                @media (max-width: $tablet) {
 
-  &__img {
-      @media (max-width: rem(990)) {
-        position: absolute;
-        transform: translate(0, rem(370));
-        border-bottom: 2px solid #492DFF;
+                }
+                @media (max-width: $mobile) {
+                  font-size: rem(20);
+                  line-height: rem(30);
+                  justify-content: start;
+                }
+                @media (max-width: $mobileSmall) {
+                  justify-content: start;
+                  font-size: rem(18);
+                  line-height: rem(24);
+                }
+                @media (max-width: rem(460)) {
+                  font-size: rem(14);
+                  line-height: rem(18);
+                  font-weight: 500;
+                  justify-content: start;
+                  padding: 0 rem(25);
+                }
+            }
       }
-        @media (max-width: rem(490)) {
-          transform: translate(0, rem(300));
-        }
-    &-block {
-      display: grid;
-      grid-template-columns: repeat(2, rem(242));
-      grid-template-rows: repeat(3, rem(218));
-      gap: rem(5);
-          @media (max-width: rem(576)) {
-            grid-template-columns: repeat(2, rem(180));
-            grid-template-rows: repeat(3, rem(164));
-          }
-          @media (max-width: rem(490)) {
-            grid-template-columns: repeat(2, rem(150));
-            grid-template-rows: repeat(3, rem(132));
-          }
-        &-1 {
-          @media (max-width: rem(576)) {
-              width: rem(180);
-              height: rem(160);
-          }
-          @media (max-width: rem(490)) {
-              width: rem(150);
-              height: rem(130);
-          }
+
+
+        &__img {
+          display: grid;
+          justify-self: end;
+          grid-template-columns: rem(238) rem(242);
+          grid-template-rows: rem(213) rem(293) rem(176);
+          gap: rem(7);
+              @media (max-width: $tablet) {
+                justify-self:center;
+              }
+              @media (max-width: $mobileSmall) {
+                grid-template-columns: rem(160) rem(164);
+                grid-template-rows: rem(161) rem(146) rem(133);
+              }
+              @media (max-width: rem(370)) {
+                grid-template-columns: rem(145) rem(149);
+                grid-template-rows: rem(161) rem(146) rem(133);
+              }
+
+            &-1 {
+              @media (max-width:  $mobileSmall) {
+                  width: rem(160);
+                  height: rem(161);
+              }
+              @media (max-width:  rem(370)) {
+                  width: rem(145);
+                  height: rem(161);
+              }
+
+            }
+
+            &-2 {
+
+              @media (max-width:  $mobileSmall) {
+                  width: rem(164);
+                  height: rem(314);
+              }
+              @media (max-width:  rem(370)) {
+                  width: rem(149);
+                  height: rem(314);
+              }
+            }
+
+            &-3 {
+              @media (max-width:  $mobileSmall) {
+                  width: rem(160);
+                  height: rem(146);
+              }
+              @media (max-width:  rem(370)) {
+                  width: rem(145);
+                  height: rem(146);
+              }
+            }
+
+            &-4 {
+              grid-column-start: 1;
+              transform: translateY(rem(-99));
+
+                @media (max-width: $mobileSmall) {
+                  width: rem(331);
+                  height: rem(133);
+                  transform: translateY(rem(0));
+              }
+
+                @media (max-width: rem(370)) {
+                  width: rem(300);
+                  height: rem(133);
+              }
+            }
         }
 
-        &-2 {
-           @media (max-width: rem(576)) {
-              width: rem(184);
-              height: rem(314);
-          }
-            @media (max-width: rem(490)) {
-              width: rem(154);
-              height: rem(252);
-          }
-        }
-
-        &-3 {
-          @media (max-width: rem(576)) {
-              width: rem(180);
-              height: rem(146);
-              margin-top: rem(-5);
-          }
-            @media (max-width: rem(490)) {
-              width: rem(150);
-              height: rem(118);
-              margin-top: rem(-5);
-          }
-        }
-
-        &-4 {
-          grid-column-start: 1;
-          transform: translateY(-20px);
-             @media (max-width: rem(576)) {
-              width: rem(368);
-              height: rem(134);
-          }
-            @media (max-width: rem(490)) {
-              width: rem(310);
-              height: rem(130);
-          }
-        }
-    }
-  }
 }
 
 
 .content-text {
     font-weight: 700;
-    font-size: rem(69);
-    line-height: rem(84);
     color: #000000;
-        @media (max-width: rem(1440)) {
+    font-size: rem(60);
+    line-height: rem(70);
+      @media (max-width: $tablet) {
+        @include adaptive-value("font-size", 69, 40);
+        @include adaptive-value("line-height", 84, 50);
+      }
+      @media (max-width: $mobileSmall) {
+        @include adaptive-value("font-size", 69, 25);
+        @include adaptive-value("line-height", 84, 40);
+      }
 
-        }
-        @media (max-width: rem(1200)) {
 
-        }
-        @media (max-width: rem(600)) {
-        }
-          @media (max-width: rem(490)) {
-
-        }
             &__first {
 
             }
@@ -350,24 +359,23 @@ $mobileSmall: rem(479.98); // телефоны s
 .info {
   display: flex;
   flex-direction: column;
-  padding: rem(126) rem(120) rem(100) rem(120);
-      @media (max-width: rem(990)) {
-       padding-top: rem(980);
-       align-items: center;
-       position: relative;
+    @include adaptive-value("padding-left", 120, 10);
+    @include adaptive-value("padding-right", 120, 10);
+    padding-top: rem(125);
+    padding-bottom: rem(50);
+      @media (max-width: $tablet) {
+        align-items: center;
+        padding-top: rem(40);
       }
-      @media (max-width: rem(770)) {
-       padding: rem(980) rem(80) rem(100) rem(80) ;
+      @media (max-width: $mobile) {
+        padding-bottom: rem(20);
       }
-      @media (max-width: rem(576)) {
-       padding: rem(850) rem(50) rem(100) rem(50) ;
-      }
-      @media (max-width: rem(490)) {
-       padding: rem(680) rem(30) rem(100) rem(30) ;
+      @media (max-width: $mobileSmall) {
+
       }
   &__line {
     border: 1.5px solid #492DFF;
-      @media (max-width: rem(990)) {
+      @media (max-width: $tablet) {
        display: none;
       }
   }
@@ -376,53 +384,48 @@ $mobileSmall: rem(479.98); // телефоны s
     display: flex;
     flex-direction: column;
     gap: rem(60);
+    font-size: rem(30);
     padding: rem(85) rem(30) 0 rem(30);
     font-weight: 400;
-    font-size: rem(30);
     line-height: rem(37);
-     @media (max-width: rem(990)) {
-       padding-top: 0;
+    // @include adaptive-value("font-size", 30, 20);
+    @include adaptive-value("gap", 60, 40);
+
+     @media (max-width: $tablet) {
+       padding: 0;
+       width: 100%;
+        br {
+          display: none;
+        }
       }
-     @media (max-width: rem(1240)) {
-        font-size: rem(24);
+     @media (max-width: $mobile) {
+        @include adaptive-value("font-size", 40, 20);
       }
-     @media (max-width: rem(1100)) {
-        font-size: rem(20);
+     @media (max-width: $mobileSmall) {
+
       }
-     @media (max-width: rem(990)) {
-        font-size: rem(28);
+     @media (max-width: rem(370)) {
+
+           line-height: rem(27);
       }
-     @media (max-width: rem(770)) {
-         font-size: rem(22);
-         line-height: rem(28);
-      }
-     @media (max-width: rem(576)) {
-         font-size: rem(20);
-         line-height: rem(24);
-      }
-     @media (max-width: rem(490)) {
-         font-size: rem(15);
-         line-height: rem(18);
-        padding-left: rem(10);
-        padding-right: rem(10);
-      }
+
 
     &-questions {
       display: flex;
       justify-content: space-between;
-      @media (max-width: rem(990)) {
+      gap: rem(5);
+      @media (max-width: $tablet) {
         flex-direction: column;
+
        }
       &-1 {
         display: flex;
         gap: rem(30);
         align-items: center;
 
-      @media (max-width: rem(770)) {
+      @media (max-width: $mobile) {
         gap: rem(20);
-       }
-      @media (max-width: rem(490)) {
-        gap: rem(10);
+
        }
         &-text {
           color: #4453D9;
@@ -434,20 +437,18 @@ $mobileSmall: rem(479.98); // телефоны s
         gap: rem(30);
         align-items: center;
 
-      @media (max-width: rem(990)) {
-        position: absolute;
-        transform: translate(0, rem(210));
+      @media (max-width: $tablet) {
+        transform: translate(0, rem(190));
        }
-      @media (max-width: rem(770)) {
-        transform: translate(0, rem(170));
+      @media (max-width: $mobile) {
+        transform: translate(0, rem(150));
         gap: rem(20);
       }
-      @media (max-width: rem(576)) {
-        transform: translate(0, rem(160));
+      @media (max-width: $mobileSmall) {
+        // transform: translate(0, rem(130));
       }
-      @media (max-width: rem(490)) {
-        transform: translate(0, rem(140));
-        gap: rem(10);
+      @media (max-width: rem(377)) {
+        transform: translate(0, rem(175));
       }
         &-text {
           color: #4453D9;
@@ -457,22 +458,19 @@ $mobileSmall: rem(479.98); // телефоны s
     &-answeas {
       display: flex;
       justify-content: space-between;
-      @media (max-width: rem(990)) {
+      gap: rem(65);
+      @media (max-width: $tablet) {
         flex-direction: column;
        }
       &-1 {
         display: flex;
         gap: rem(30);
         align-items: center;
-      @media (max-width: rem(990)) {
-        position: absolute;
-        transform: translate(0, rem(-30));
+      @media (max-width: $tablet) {
+        transform: translate(0, rem(-50));
        }
-      @media (max-width: rem(770)) {
+      @media (max-width: $mobile) {
          gap: rem(20);
-       }
-      @media (max-width: rem(490)) {
-         gap: rem(10);
        }
         &-text {
           color: #000000;
@@ -483,20 +481,18 @@ $mobileSmall: rem(479.98); // телефоны s
         display: flex;
         gap: rem(30);
         align-items: center;
-          @media (max-width: rem(990)) {
-            position: absolute;
-            transform: translate(0, rem(160));
+          @media (max-width: $tablet) {
+            transform: translate(0, rem(80));
         }
-      @media (max-width: rem(770)) {
-        transform: translate(0, rem(130));
+      @media (max-width: $mobile) {
+        transform: translate(0, rem(30));
         gap: rem(20);
       }
-      @media (max-width: rem(576)) {
-        transform: translate(0, rem(120));
+      @media (max-width: $mobileSmall) {
+        transform: translate(0, rem(40));
       }
-      @media (max-width: rem(490)) {
-        transform: translate(0, rem(100));
-        gap: rem(10);
+      @media (max-width: rem(370)) {
+        transform: translate(0, rem(30));
       }
         &-text {
           color: #000000;
@@ -509,19 +505,20 @@ $mobileSmall: rem(479.98); // телефоны s
 .info-icon {
   width: rem(43);
   height: rem(45);
-      @media (max-width: rem(770)) {
+      @media (max-width: $mobile) {
         width: rem(24);
         height: rem(24);
       }
 }
+
+
 
 //-------info--------
 
 
 //-------footer--------
 .foot {
-      @media (max-width: rem(990)) {
-       position: relative;
+      @media (max-width: $tablet) {
     }
 }
 .footer {
@@ -529,44 +526,52 @@ $mobileSmall: rem(479.98); // телефоны s
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: rem(517);
-    @media (max-width: rem(990)) {
-     position: absolute;
+  height: rem(570);
+    @media (max-width: $tablet) {
       transform: translate(0, rem(160));
        height: rem(700);
     }
-   @media (max-width: rem(770)) {
-     position: absolute;
-      transform: translate(0, rem(160));
-       height: rem(800);
+   @media (max-width: $mobile) {
+      transform: translate(0, rem(100));
     }
+   @media (max-width: $mobileSmall) {
+    }
+      @media (max-width: rem(370)) {
+        transform: translate(0, rem(50));
+      }
 
 		&__container{
        display: flex;
        flex-direction: column;
-       padding: rem(75) rem(120) rem(35) rem(120);
-              @media (max-width: rem(576)) {
-                padding: rem(75) rem(30) rem(35) rem(30);
-              }
+      @include adaptive-value("padding-left", 120, 10);
+      @include adaptive-value("padding-right", 120, 10);
+      padding-top: rem(85);
+        @media (max-width: $mobile) {
+          padding-top: rem(30);
+        }
+        @media (max-width: rem(370)) {
+
+        }
 
        &-title {
-          font-weight: 600;
+          font-weight: 500;
           font-size: rem(55);
           line-height: rem(66);
           color: #F9F9F9;
           padding-bottom: rem(15);
-             @media (max-width: rem(770)) {
-                font-family: 'Montserrat';
-                font-style: normal;
+             @media (max-width: $mobile) {
                 font-weight: 500;
                 font-size: rem(35);
                 line-height: rem(29);
               }
-              @media (max-width: rem(576)) {
+              @media (max-width: $mobileSmall) {
                 font-weight: 500;
                 font-size: rem(24);
                 line-height: rem(30);
-                height: rem(54);
+                padding-bottom: rem(10);
+              }
+              @media (max-width: rem(370)) {
+
               }
        }
 
@@ -576,18 +581,20 @@ $mobileSmall: rem(479.98); // телефоны s
         line-height: rem(39);
         color: #F9F9F9;
         padding-bottom: rem(35);
-              @media (max-width: rem(770)) {
-                font-family: 'Montserrat';
-                font-style: normal;
+              @media (max-width: $mobile) {
                 font-weight: 400;
                 font-size: rem(20);
                 line-height: rem(24);
               }
-              @media (max-width: rem(576)) {
+              @media (max-width: $mobileSmall) {
                 font-weight: 400;
                 font-size: rem(20);
                 line-height: rem(24);
                 height: rem(54);
+                padding-bottom: rem(10);
+              }
+              @media (max-width: rem(370)) {
+
               }
       }
 
@@ -596,7 +603,7 @@ $mobileSmall: rem(479.98); // телефоны s
         justify-content: space-between;
         gap: rem(18);
         padding-bottom: rem(35);
-            @media (max-width: rem(990)) {
+            @media (max-width: $tablet) {
               flex-direction: column;
             }
 
@@ -613,11 +620,11 @@ $mobileSmall: rem(479.98); // телефоны s
           line-height: rem(39);
           color: #9E9E9E;
           padding-left: rem(18);
-            @media (max-width: rem(990)) {
+            @media (max-width: $tablet) {
               width: 90%;
               height: rem(58);
             }
-              @media (max-width: rem(576)) {
+              @media (max-width: $mobileSmall) {
                 font-weight: 400;
                 font-size: rem(20);
                 line-height: rem(24);
@@ -637,11 +644,11 @@ $mobileSmall: rem(479.98); // телефоны s
           line-height: rem(39);
           color: #FFFFFF;
           border: none;
-            @media (max-width: rem(990)) {
+            @media (max-width: $tablet) {
               width: 60%;
               height: rem(58);
             }
-              @media (max-width: rem(576)) {
+              @media (max-width: $mobileSmall) {
                 font-weight: 400;
                 font-size: rem(20);
                 line-height: rem(24);

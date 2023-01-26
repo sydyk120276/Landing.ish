@@ -18,7 +18,7 @@ function getTimeRemaining(endtime) {
 function initializeClock(id, endtime) {
   const date = document.querySelector(id);
   const timeinterval = setInterval(function () {
-    var t = getTimeRemaining(endtime);
+    var t = getTimeRemaining(endtime)
     date.innerHTML =
       t.days +
       " дней " +
@@ -34,4 +34,4 @@ function initializeClock(id, endtime) {
   }, 1000);
 }
 
-initializeClock(".content-time__сountdown", deadline);
+initializeClock(".content__time-сountdown", deadline);
