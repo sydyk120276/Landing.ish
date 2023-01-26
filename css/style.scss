@@ -28,8 +28,6 @@ ul {
   @return $result;
 }
 
-@debug  calc(30px + 90 * ((100vw - 320px) / 1440));
-
 $maxWidthContainer: 1440px;
 
 @mixin adaptive-value($property, $startSize, $minSize) {
@@ -47,6 +45,20 @@ $mobileSmall: rem(479.98); // телефоны s
     max-width: $maxWidthContainer;
     margin: 0 auto;;
   }
+
+  //-------animation--------
+
+._anim-items {
+  transform: translate(0px, 100%);
+  opacity: 0;
+  transition: all 0.8s ease 0s;
+}
+._anim-items._active {
+  opacity: 1;
+  transform: translate(0px, 0px);
+}
+
+//-------animation--------
 
   //-------header--------
 
@@ -66,6 +78,9 @@ $mobileSmall: rem(479.98); // телефоны s
 		&__logo {
         width: rem(120);
         height: rem(70);
+        transform: translate(-50px, 0px);
+        opacity: 0;
+        transition: all 0.5s ease 1s;
         @media (max-width: $mobile) {
           width: rem(90);
           height: rem(60);
@@ -80,6 +95,9 @@ $mobileSmall: rem(479.98); // телефоны s
       display: flex;
       gap: rem(22);
       align-items: center;
+      transform: translate(50px, 0px);
+      opacity: 0;
+      transition: all 0.7s ease 1s;
         @media (max-width: $mobile) {
           gap: rem(9);
         }
@@ -163,6 +181,29 @@ $mobileSmall: rem(479.98); // телефоны s
           @media (max-width: $mobile) {
 
           }
+            &-first {
+                transform: translate(-50px, 0px);
+                opacity: 0;
+                transition: all 0.7s ease 0.3s;
+            }
+            &-second {
+                transform: translate(-100px, 0px);
+                opacity: 0;
+                transition: all 0.5s ease 0.6s;
+
+            }
+            &-third {
+                transform: translate(rem(-100), 0px);
+                opacity: 0;
+                transition: all 0.6s ease 0.9s;
+
+            }
+            &-fourth {
+                transform: translate(-50px, 0px);
+                opacity: 0;
+                transition: all 0.7s ease 1.2s;
+
+            }
         }
 
 
@@ -175,6 +216,9 @@ $mobileSmall: rem(479.98); // телефоны s
         justify-content: center;
         flex-direction: column;
         gap: rem(8);
+        transform: translate(0px, -100px);
+        opacity: 0;
+        transition: all 0.4s ease 1s;
             &-line {
             @media (max-width: $tablet) {
               position: absolute;
@@ -268,18 +312,24 @@ $mobileSmall: rem(479.98); // телефоны s
               }
 
             &-1 {
-              @media (max-width:  $mobileSmall) {
-                  width: rem(160);
-                  height: rem(161);
-              }
-              @media (max-width:  rem(370)) {
-                  width: rem(145);
-                  height: rem(161);
-              }
+                transform: translate(0px, -50px);
+                opacity: 0;
+                transition: all 0.7s ease 0.3s;
+                  @media (max-width:  $mobileSmall) {
+                      width: rem(160);
+                      height: rem(161);
+                  }
+                  @media (max-width:  rem(370)) {
+                      width: rem(145);
+                      height: rem(161);
+                  }
 
             }
 
             &-2 {
+              transform: translate(50px, 0px);
+              opacity: 0;
+              transition: all 0.7s ease 0.6s;
 
               @media (max-width:  $mobileSmall) {
                   width: rem(164);
@@ -292,6 +342,9 @@ $mobileSmall: rem(479.98); // телефоны s
             }
 
             &-3 {
+              transform: translate(-50px, 0px);
+              opacity: 0;
+              transition: all 0.7s ease 0.9s;
               @media (max-width:  $mobileSmall) {
                   width: rem(160);
                   height: rem(146);
@@ -327,6 +380,7 @@ $mobileSmall: rem(479.98); // телефоны s
     color: #000000;
     font-size: rem(60);
     line-height: rem(70);
+
       @media (max-width: $tablet) {
         @include adaptive-value("font-size", 69, 40);
         @include adaptive-value("line-height", 84, 50);
@@ -335,20 +389,6 @@ $mobileSmall: rem(479.98); // телефоны s
         @include adaptive-value("font-size", 69, 25);
         @include adaptive-value("line-height", 84, 40);
       }
-
-
-            &__first {
-
-            }
-            &__second {
-
-            }
-            &__third {
-
-            }
-            &__fourth {
-
-            }
 }
 
 //-------content--------
@@ -429,6 +469,9 @@ $mobileSmall: rem(479.98); // телефоны s
        }
         &-text {
           color: #4453D9;
+          transform: translate(0px, -50px);
+          opacity: 0;
+          transition: all 0.5s ease 0.3s;
         }
       }
 
@@ -452,6 +495,9 @@ $mobileSmall: rem(479.98); // телефоны s
       }
         &-text {
           color: #4453D9;
+          transform: translate(50px, 0px);
+          opacity: 0;
+          transition: all 0.5s ease 0.6s;
         }
       }
     }
@@ -466,6 +512,7 @@ $mobileSmall: rem(479.98); // телефоны s
         display: flex;
         gap: rem(30);
         align-items: center;
+
       @media (max-width: $tablet) {
         transform: translate(0, rem(-50));
        }
@@ -474,6 +521,9 @@ $mobileSmall: rem(479.98); // телефоны s
        }
         &-text {
           color: #000000;
+          transform: translate(0px, 50px);
+          opacity: 0;
+          transition: all 0.5s ease 1s;
         }
       }
 
@@ -481,6 +531,7 @@ $mobileSmall: rem(479.98); // телефоны s
         display: flex;
         gap: rem(30);
         align-items: center;
+
           @media (max-width: $tablet) {
             transform: translate(0, rem(80));
         }
@@ -496,6 +547,9 @@ $mobileSmall: rem(479.98); // телефоны s
       }
         &-text {
           color: #000000;
+          transform: translate(0px, 50px);
+          opacity: 0;
+          transition: all 0.5s ease 1.2s;
         }
       }
     }
@@ -505,6 +559,9 @@ $mobileSmall: rem(479.98); // телефоны s
 .info-icon {
   width: rem(43);
   height: rem(45);
+  transform: translate(-50px, 0px);
+  opacity: 0;
+  transition: all 0.6s ease 0.5s;
       @media (max-width: $mobile) {
         width: rem(24);
         height: rem(24);
@@ -559,6 +616,9 @@ $mobileSmall: rem(479.98); // телефоны s
           line-height: rem(66);
           color: #F9F9F9;
           padding-bottom: rem(15);
+          transform: translate(0px, -70px);
+          opacity: 0;
+          transition: all 0.6s ease 0.8s;
              @media (max-width: $mobile) {
                 font-weight: 500;
                 font-size: rem(35);
@@ -581,6 +641,9 @@ $mobileSmall: rem(479.98); // телефоны s
         line-height: rem(39);
         color: #F9F9F9;
         padding-bottom: rem(35);
+        transform: translate(0px, -50px);
+        opacity: 0;
+        transition: all 0.6s ease 0.3s;
               @media (max-width: $mobile) {
                 font-weight: 400;
                 font-size: rem(20);
@@ -620,6 +683,9 @@ $mobileSmall: rem(479.98); // телефоны s
           line-height: rem(39);
           color: #9E9E9E;
           padding-left: rem(18);
+          transform: translate(-50px, 0px);
+          opacity: 0;
+          transition: all 0.8s ease 1s;
             @media (max-width: $tablet) {
               width: 90%;
               height: rem(58);
@@ -644,6 +710,9 @@ $mobileSmall: rem(479.98); // телефоны s
           line-height: rem(39);
           color: #FFFFFF;
           border: none;
+          transform: translate(50px, 0px);
+          opacity: 0;
+          transition: all 0.8s ease 1s;
             @media (max-width: $tablet) {
               width: 60%;
               height: rem(58);
@@ -666,6 +735,9 @@ $mobileSmall: rem(479.98); // телефоны s
         letter-spacing: 0.718563px;
         color: rgba(255, 255, 255, 0.5);
         padding-bottom: rem(35);
+        transform: translate(0px, 50px);
+        opacity: 0;
+        transition: all 0.6s ease 0.3s;
       }
 
       &-copy {
@@ -675,6 +747,9 @@ $mobileSmall: rem(479.98); // телефоны s
         font-size: rem(12);
         line-height: rem(15);
         color: rgba(255, 255, 255, 0.5);
+        transform: translate(0px, 50px);
+        opacity: 0;
+        transition: all 0.6s ease 0.5s;
       }
 		}
 
@@ -683,3 +758,4 @@ $mobileSmall: rem(479.98); // телефоны s
 
 
 //-------footer--------
+

@@ -22,6 +22,20 @@ ul {
   margin: 0 auto;
 }
 
+._anim-items {
+  -webkit-transform: translate(0px, 100%);
+          transform: translate(0px, 100%);
+  opacity: 0;
+  -webkit-transition: all 0.8s ease 0s;
+  transition: all 0.8s ease 0s;
+}
+
+._anim-items._active {
+  opacity: 1;
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+}
+
 .header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -46,6 +60,11 @@ ul {
 .header__logo {
   width: 7.5rem;
   height: 4.375rem;
+  -webkit-transform: translate(-50px, 0px);
+          transform: translate(-50px, 0px);
+  opacity: 0;
+  -webkit-transition: all 0.5s ease 1s;
+  transition: all 0.5s ease 1s;
 }
 
 @media (max-width: 47.99875rem) {
@@ -70,6 +89,11 @@ ul {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transform: translate(50px, 0px);
+          transform: translate(50px, 0px);
+  opacity: 0;
+  -webkit-transition: all 0.7s ease 1s;
+  transition: all 0.7s ease 1s;
 }
 
 @media (max-width: 47.99875rem) {
@@ -182,6 +206,38 @@ ul {
   padding-top: 0.625rem;
 }
 
+.content__title-first {
+  -webkit-transform: translate(-50px, 0px);
+          transform: translate(-50px, 0px);
+  opacity: 0;
+  -webkit-transition: all 0.7s ease 0.3s;
+  transition: all 0.7s ease 0.3s;
+}
+
+.content__title-second {
+  -webkit-transform: translate(-100px, 0px);
+          transform: translate(-100px, 0px);
+  opacity: 0;
+  -webkit-transition: all 0.5s ease 0.6s;
+  transition: all 0.5s ease 0.6s;
+}
+
+.content__title-third {
+  -webkit-transform: translate(-6.25rem, 0px);
+          transform: translate(-6.25rem, 0px);
+  opacity: 0;
+  -webkit-transition: all 0.6s ease 0.9s;
+  transition: all 0.6s ease 0.9s;
+}
+
+.content__title-fourth {
+  -webkit-transform: translate(-50px, 0px);
+          transform: translate(-50px, 0px);
+  opacity: 0;
+  -webkit-transition: all 0.7s ease 1.2s;
+  transition: all 0.7s ease 1.2s;
+}
+
 .content__time {
   position: relative;
   height: 10.375rem;
@@ -198,6 +254,11 @@ ul {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 0.5rem;
+  -webkit-transform: translate(0px, -100px);
+          transform: translate(0px, -100px);
+  opacity: 0;
+  -webkit-transition: all 0.4s ease 1s;
+  transition: all 0.4s ease 1s;
 }
 
 @media (max-width: 61.99875rem) {
@@ -337,6 +398,14 @@ ul {
   }
 }
 
+.content__img-1 {
+  -webkit-transform: translate(0px, -50px);
+          transform: translate(0px, -50px);
+  opacity: 0;
+  -webkit-transition: all 0.7s ease 0.3s;
+  transition: all 0.7s ease 0.3s;
+}
+
 @media (max-width: 29.99875rem) {
   .content__img-1 {
     width: 10rem;
@@ -351,6 +420,14 @@ ul {
   }
 }
 
+.content__img-2 {
+  -webkit-transform: translate(50px, 0px);
+          transform: translate(50px, 0px);
+  opacity: 0;
+  -webkit-transition: all 0.7s ease 0.6s;
+  transition: all 0.7s ease 0.6s;
+}
+
 @media (max-width: 29.99875rem) {
   .content__img-2 {
     width: 10.25rem;
@@ -363,6 +440,14 @@ ul {
     width: 9.3125rem;
     height: 19.625rem;
   }
+}
+
+.content__img-3 {
+  -webkit-transform: translate(-50px, 0px);
+          transform: translate(-50px, 0px);
+  opacity: 0;
+  -webkit-transition: all 0.7s ease 0.9s;
+  transition: all 0.7s ease 0.9s;
 }
 
 @media (max-width: 29.99875rem) {
@@ -537,6 +622,11 @@ ul {
 
 .info__content-questions-1-text {
   color: #4453D9;
+  -webkit-transform: translate(0px, -50px);
+          transform: translate(0px, -50px);
+  opacity: 0;
+  -webkit-transition: all 0.5s ease 0.3s;
+  transition: all 0.5s ease 0.3s;
 }
 
 .info__content-questions-2 {
@@ -573,6 +663,11 @@ ul {
 
 .info__content-questions-2-text {
   color: #4453D9;
+  -webkit-transform: translate(50px, 0px);
+          transform: translate(50px, 0px);
+  opacity: 0;
+  -webkit-transition: all 0.5s ease 0.6s;
+  transition: all 0.5s ease 0.6s;
 }
 
 .info__content-answeas {
@@ -619,6 +714,11 @@ ul {
 
 .info__content-answeas-1-text {
   color: #000000;
+  -webkit-transform: translate(0px, 50px);
+          transform: translate(0px, 50px);
+  opacity: 0;
+  -webkit-transition: all 0.5s ease 1s;
+  transition: all 0.5s ease 1s;
 }
 
 .info__content-answeas-2 {
@@ -662,11 +762,21 @@ ul {
 
 .info__content-answeas-2-text {
   color: #000000;
+  -webkit-transform: translate(0px, 50px);
+          transform: translate(0px, 50px);
+  opacity: 0;
+  -webkit-transition: all 0.5s ease 1.2s;
+  transition: all 0.5s ease 1.2s;
 }
 
 .info-icon {
   width: 2.6875rem;
   height: 2.8125rem;
+  -webkit-transform: translate(-50px, 0px);
+          transform: translate(-50px, 0px);
+  opacity: 0;
+  -webkit-transition: all 0.6s ease 0.5s;
+  transition: all 0.6s ease 0.5s;
 }
 
 @media (max-width: 47.99875rem) {
@@ -731,6 +841,11 @@ ul {
   line-height: 4.125rem;
   color: #F9F9F9;
   padding-bottom: 0.9375rem;
+  -webkit-transform: translate(0px, -70px);
+          transform: translate(0px, -70px);
+  opacity: 0;
+  -webkit-transition: all 0.6s ease 0.8s;
+  transition: all 0.6s ease 0.8s;
 }
 
 @media (max-width: 47.99875rem) {
@@ -756,6 +871,11 @@ ul {
   line-height: 2.4375rem;
   color: #F9F9F9;
   padding-bottom: 2.1875rem;
+  -webkit-transform: translate(0px, -50px);
+          transform: translate(0px, -50px);
+  opacity: 0;
+  -webkit-transition: all 0.6s ease 0.3s;
+  transition: all 0.6s ease 0.3s;
 }
 
 @media (max-width: 47.99875rem) {
@@ -809,6 +929,11 @@ ul {
   line-height: 2.4375rem;
   color: #9E9E9E;
   padding-left: 1.125rem;
+  -webkit-transform: translate(-50px, 0px);
+          transform: translate(-50px, 0px);
+  opacity: 0;
+  -webkit-transition: all 0.8s ease 1s;
+  transition: all 0.8s ease 1s;
 }
 
 @media (max-width: 61.99875rem) {
@@ -839,6 +964,11 @@ ul {
   line-height: 2.4375rem;
   color: #FFFFFF;
   border: none;
+  -webkit-transform: translate(50px, 0px);
+          transform: translate(50px, 0px);
+  opacity: 0;
+  -webkit-transition: all 0.8s ease 1s;
+  transition: all 0.8s ease 1s;
 }
 
 @media (max-width: 61.99875rem) {
@@ -867,6 +997,11 @@ ul {
   letter-spacing: 0.718563px;
   color: rgba(255, 255, 255, 0.5);
   padding-bottom: 2.1875rem;
+  -webkit-transform: translate(0px, 50px);
+          transform: translate(0px, 50px);
+  opacity: 0;
+  -webkit-transition: all 0.6s ease 0.3s;
+  transition: all 0.6s ease 0.3s;
 }
 
 .footer__container-copy {
@@ -876,5 +1011,10 @@ ul {
   font-size: 0.75rem;
   line-height: 0.9375rem;
   color: rgba(255, 255, 255, 0.5);
+  -webkit-transform: translate(0px, 50px);
+          transform: translate(0px, 50px);
+  opacity: 0;
+  -webkit-transition: all 0.6s ease 0.5s;
+  transition: all 0.6s ease 0.5s;
 }
 /*# sourceMappingURL=style.css.map */
