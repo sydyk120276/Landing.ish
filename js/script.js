@@ -34,4 +34,4 @@ function initializeClock(id, endtime) {
   }, 1000);
 }
 
-initializeClock(".content-time__date", deadline);
+initializeClock(".content-time__сountdown", deadline);
