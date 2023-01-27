@@ -669,34 +669,44 @@ $mobileSmall: rem(479.98); // телефоны s
             @media (max-width: $tablet) {
               flex-direction: column;
             }
-
-        &-input {
+        &-box {
           width: 60%;
-          height: rem(88);
-          background: #FFFFFF;
-          border: 2px solid #FF7E2D;
-          border-radius: rem(8);
-          font-family: 'Inter';
-          font-style: normal;
-          font-weight: 400;
-          font-size: rem(32);
-          line-height: rem(39);
-          color: #9E9E9E;
-          padding-left: rem(18);
-          transform: translate(-50px, 0px);
-          opacity: 0;
-          transition: all 0.8s ease 1s;
-            @media (max-width: $tablet) {
-              width: 90%;
-              height: rem(58);
-            }
-              @media (max-width: $mobileSmall) {
-                font-weight: 400;
-                font-size: rem(20);
-                line-height: rem(24);
-                height: rem(54);
+          margin-bottom: rem(20);
+          // display: flex;
+          // flex-direction: column-reverse;
+          @media (max-width: $tablet) {
+            width: 100%;
+          }
+          &-input {
+            width: 95%;
+            margin-bottom: rem(8);
+            height: rem(88);
+            background: #FFFFFF;
+            border: 2px solid #FF7E2D;
+            border-radius: rem(8);
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: rem(32);
+            line-height: rem(39);
+            color: #9E9E9E;
+            padding-left: rem(18);
+            transform: translate(-50px, 0px);
+            opacity: 0;
+            transition: all 0.8s ease 1s;
+              @media (max-width: $tablet) {
+                width: 90%;
+                height: rem(58);
               }
+                @media (max-width: $mobileSmall) {
+                  font-weight: 400;
+                  font-size: rem(20);
+                  line-height: rem(24);
+                  height: rem(54);
+                }
+          }
         }
+
 
         &-button {
           width: 40%;
@@ -752,9 +762,14 @@ $mobileSmall: rem(479.98); // телефоны s
         transition: all 0.6s ease 0.5s;
       }
 		}
-
+  
 }
-
+ 
+.just-validate-error-label {
+  font-weight: 700;
+  font-size: rem(25);
+  line-height: rem(24);
+}
 
 
 //-------footer--------

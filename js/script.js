@@ -39,7 +39,7 @@ initializeClock(".content__time-сountdown", deadline);
 // Анимация
 
 const animItems = document.querySelectorAll("._anim-items");
-console.log(animItems)
+
 
 if (animItems.length > 0) {
   window.addEventListener("scroll", animOnScroll);
@@ -77,3 +77,48 @@ if (animItems.length > 0) {
     animOnScroll();
   }, 300);
 }
+
+// валидация
+
+
+// const selector = document.querySelector('#phone')
+// let im = new Inputmask("+7(999)999-99-99")
+// im.mask(selector)
+
+let validation = new JustValidate('#form', {
+  errorLabelStyle: {
+    color: 'blue'
+  }
+})
+
+validation.addField("#email", [
+  {
+    rule: 'required',
+    errorMessage: 'Введите email'
+  },
+  // {
+  //   rule: 'minLength',
+  //   value: 2,
+  //   errorMessage: 'Минимум пять символов'
+  // },
+  {
+    rule: 'email',
+    errorMessage: 'Ошибка в почте, введите правильный email'
+  },
+])
+  // .addField("#phone", [
+  //   {
+  //     validator: (value) => {
+  //       const phone = selector.inputmask.unmaskedvalue()
+  //       return Boolean(Number(phone) && phone.length > 0)
+  //     },
+  //     errorMessage: 'Введите телефон'
+  //   },
+  //   {
+  //     validator: (value) => {
+  //       const phone = selector.inputmask.unmaskedvalue()
+  //       return Boolean(Number(phone) && phone.length === 10)
+  //     },
+  //     errorMessage: 'Введите номер полностью'
+  //   },
+  // ])
