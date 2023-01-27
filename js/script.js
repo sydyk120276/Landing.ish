@@ -94,7 +94,7 @@ let validation = new JustValidate('#form', {
 validation.addField("#email", [
   {
     rule: 'required',
-    errorMessage: 'Введите email'
+    errorMessage: 'Введите электронную почту'
   },
   // {
   //   rule: 'minLength',
@@ -103,7 +103,7 @@ validation.addField("#email", [
   // },
   {
     rule: 'email',
-    errorMessage: 'Ошибка в почте, введите правильный email'
+    errorMessage: 'Ошибка введите правильный электронную почту'
   },
 ])
   // .addField("#phone", [
