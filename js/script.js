@@ -85,11 +85,7 @@ if (animItems.length > 0) {
 // let im = new Inputmask("+7(999)999-99-99")
 // im.mask(selector)
 
-let validation = new JustValidate('#form', {
-  errorLabelStyle: {
-    color: 'blue'
-  }
-})
+let validation = new JustValidate('#form')
 
 validation.addField("#email", [
   {
